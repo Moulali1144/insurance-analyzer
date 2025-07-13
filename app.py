@@ -4,11 +4,15 @@ import random
 from datetime import datetime
 from flask import Flask, request, jsonify, render_template
 
+UPLOAD_FOLDER = 'uploads'
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Create upload directory if it doesn't exist
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
+
 
 def generate_mock_policy_data(filename):
     """Generate mock policy data based on filename"""
