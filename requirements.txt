@@ -1,0 +1,6 @@
+flask
+pytesseract
+python-magic
+PyMuPDF
+Pillow
+gunicorn

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content same as provided -->
+</head>
+<body>
+    <!-- Home Page -->
+    <section id="home-page" class="page-section active">
+        <!-- Same as provided -->
+    </section>
+    
+    <!-- Results Page -->
+    <section id="results-page" class="page-section">
+        <!-- Same as provided -->
+    </section>
+
+    <script>
+        // Updated JavaScript to call backend API
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... (same as provided, with the following changes)
+            
+            // Replace fetchPolicyData() with this:
+            async function fetchPolicyData() {
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Analysis failed');
+                }
+                
+                return response.json();
+            }
+            
+            // Remove the generateMockPolicyData function
+            // Keep all other functions the same
+        });
+    </script>
+</body>
+</html>
